@@ -1,0 +1,51 @@
+﻿<Page x:Class="EricNee.AutoStartDesktop.AppSettings"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EricNee.AutoStartDesktop"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Settings">
+
+    <Grid x:Name="GridAppSettings">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="121*"/>
+            <RowDefinition Height="104*"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="label" Content="Disable Windows Key" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,47,0,0" RenderTransformOrigin="2.607,5.817" Width="135">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="-0.607" />
+                    <TranslateTransform X="1.458" Y="-0.863" />
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label x:Name="label_Copy" Content="Disable Alt + F4" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,73,0,0" RenderTransformOrigin="2.607,5.817" Width="135">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="-0.607" />
+                    <TranslateTransform X="1.458" Y="-0.863" />
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Button x:Name="ButtonSubmit" Content="Submit" HorizontalAlignment="Left" Margin="198,156,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.46,3.97" Click="ButtonSubmit_Click" />
+        <CheckBox x:Name="CheckBoxWindowsKey" IsChecked="{Binding DisabledWindowsKey}" Content="" HorizontalAlignment="Left" Margin="199,54,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="CheckBoxAltF4" IsChecked="{Binding DisabledAltF4}" HorizontalAlignment="Left" Margin="199,80,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy2" Content="Hide Taskbar" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,99,0,0" RenderTransformOrigin="2.607,5.817" Width="135">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="-0.607" />
+                    <TranslateTransform X="1.458" Y="-0.863" />
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <CheckBox x:Name="CheckBoxTaskbar" IsChecked="{Binding HiddenTaskbar}" HorizontalAlignment="Left" Margin="199,106,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Page>

@@ -1,0 +1,22 @@
+﻿<Window x:Class="EricNee.AutoStartDesktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EricNee.AutoStartDesktop"
+        mc:Ignorable="d"
+        Title="Applications" WindowState="Maximized" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Closing="Window_Closing" Initialized="Window_Initialized" Closed="Window_Closed">
+    <Grid x:Name="GridLayout">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid x:Name="GridApps" Grid.Column="1" Loaded="GridApps_Loaded"></Grid>
+        <Button Content="Admin" Name="AdminButton" Grid.Row="1" Grid.Column="1" Click="AdminButton_Click" Width="80"></Button>
+    </Grid>
+</Window>

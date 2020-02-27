@@ -1,0 +1,32 @@
+﻿<Window x:Class="EricNee.AutoStartDesktop.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EricNee.AutoStartDesktop"
+        mc:Ignorable="d"
+        Title="AdminWindow" >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Button x:Name="ButtonLogin" Content="Login" HorizontalAlignment="Left" Width="150" Grid.Row="0" Grid.Column="0" Click="ButtonLogin_Click"/>
+        <Button x:Name="ButtonUpdatePassword" Content="Change Password" HorizontalAlignment="Left" Width="150" Grid.Row="0" Grid.Column="1" Click="ButtonUpdatePassword_Click"/>
+        <Button x:Name="ButtonAddApp" Content="Add App" HorizontalAlignment="Left" Width="150" Grid.Row="0" Click="ButtonAddApp_Click" Grid.Column="2"/>
+        <Button x:Name="ButtonDeleteApp" Content="Delete App" HorizontalAlignment="Left" Width="150" Grid.Row="0" Grid.Column="3" Click="ButtonDeleteApp_Click"/>
+        <Button x:Name="ButtonAppSettings" Content="Settings" HorizontalAlignment="Left" Width="150" Grid.Column="4" Click="ButtonAppSettings_Click"></Button>
+        <Button x:Name="ButtonExit" Content="Exit App" HorizontalAlignment="Left" Width="150" Grid.Row="0" Click="ButtonExit_Click" Grid.Column="5"/>
+        <Label x:Name="LabelLogonInfo" Grid.Row="0" Background="{x:Null}" Content="Not logged in" Foreground="#FF3FBB11" Grid.Column="6" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Frame Name="FrameAdmin" Grid.ColumnSpan="6" Grid.Row="1"></Frame>
+    </Grid>
+</Window>
