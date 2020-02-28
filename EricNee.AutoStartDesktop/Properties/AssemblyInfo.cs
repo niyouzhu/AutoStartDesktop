@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyTitle("EricNee.AutoStartDesktop")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Me.ZhuoYue.Me")]
 [assembly: AssemblyProduct("EricNee.AutoStartDesktop")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]

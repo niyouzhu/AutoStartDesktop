@@ -17,5 +17,7 @@ namespace EricNee.AutoStartDesktop.Library
         public Guid Id { get; set; }
 
         public string LogonName { get; set; }
+
+        public string Args { get; set; }
     }
 }

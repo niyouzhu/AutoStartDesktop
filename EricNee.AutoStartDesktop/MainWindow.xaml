@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EricNee.AutoStartDesktop"
         mc:Ignorable="d"
-        Title="Applications" WindowState="Maximized" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Closing="Window_Closing" Initialized="Window_Initialized" Closed="Window_Closed">
+        Title="Applications" WindowState="Maximized" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Closing="Window_Closing" Initialized="Window_Initialized"  >
     <Grid x:Name="GridLayout">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5"/>
@@ -13,10 +13,14 @@
             <ColumnDefinition Width="5"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid x:Name="GridApps" Grid.Column="1" Loaded="GridApps_Loaded"></Grid>
-        <Button Content="Admin" Name="AdminButton" Grid.Row="1" Grid.Column="1" Click="AdminButton_Click" Width="80"></Button>
+        <Grid x:Name="GridApps" Grid.Column="1" Grid.Row="1" Loaded="GridApps_Loaded"></Grid>
+        <Label HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1" Content="使用键盘 Alt + Tab 切换应用" Foreground="#FF47B40A" FontWeight="Bold"></Label>
+        <Label HorizontalAlignment="Right" Content="Http://Me.ZhuoYue.Me" Grid.Column="1" Grid.Row="2"/>
+        <Button Content="Admin" Name="AdminButton" Grid.Row="2" Grid.Column="1" Click="AdminButton_Click" Width="80"></Button>
+        <Label Name="LabelTime" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="0"></Label>
     </Grid>
 </Window>

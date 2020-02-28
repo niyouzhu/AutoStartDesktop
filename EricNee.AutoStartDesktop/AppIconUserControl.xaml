@@ -14,6 +14,6 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <!--<Image x:Name="AppImage" Grid.Column="0" Grid.Row="0" Height="48" Width="48"></Image>-->
-        <Label x:Name="AppName" Grid.Row="0" Grid.Column="0" MouseLeftButtonUp="AppName_MouseLeftButtonUp" FontSize="20"  />
+        <Label x:Name="AppName" Grid.Row="0" Grid.Column="0" MouseLeftButtonUp="AppName_MouseLeftButtonUp" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"  />
     </Grid>
 </UserControl>

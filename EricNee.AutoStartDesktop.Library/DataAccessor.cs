@@ -62,7 +62,7 @@ namespace EricNee.AutoStartDesktop.Library
         {
             using (var dbContext = new AutoStartsDbContext(DbContextOptionsBuilder))
             {
-                var existing = dbContext.Apps.Find(app.Id);
+                var existing = dbContext.Apps.Single(it => it.Id == app.Id);
                 var rt = dbContext.Apps.Remove(existing);
                 return rt.Entity;
             }
@@ -75,7 +75,7 @@ namespace EricNee.AutoStartDesktop.Library
             {
                 foreach (var app in apps)
                 {
-                    var existing = dbContext.Apps.Find(app.Id);
+                    var existing = dbContext.Apps.Single(it => it.Id == app.Id);
                     rt.Add(dbContext.Apps.Remove(existing).Entity);
                 }
                 dbContext.SaveChanges();

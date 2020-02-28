@@ -38,7 +38,12 @@ namespace EricNee.AutoStartDesktop
 
         private void AppName_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            var process = ProcessHelper.OpenIfExisted(Process.Cmd);
+            bool existing;
+            var process = App.ProcessSet.Open(Process.Cmd, Process.Args, out existing);
+            if (existing)
+            {
+                MessageBox.Show("该应用已经在运行，按住键盘 Alt + Tab 键切换并找到它");
+            }
         }
     }
 }

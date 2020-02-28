@@ -24,27 +24,25 @@ namespace EricNee.AutoStartDesktop
 
         private Business Business { get; } = new Business(new DataAccessor(() =>
         {
-            var builder = new DbContextOptionsBuilder().UseSqlCe("DataSource=db.sdf");
+            var builder = new DbContextOptionsBuilder().UseSqlite(App.ConnectionString);
             return builder;
         }));
 
+
+        private Clock Clock { get; } = new Clock();
         private Library.AppSettings AppSettings { get; set; }
         public MainWindow()
         {
-            Business.Init();
             AppSettings = Business.GetAppSettings();
-            AppMagician = new AppMagician(AppSettings);
             InitializeComponent();
         }
 
         public void Refresh()
         {
             AppSettings = Business.GetAppSettings();
-            AppMagician.AppSettings = AppSettings;
-            AppMagician.Magic();
+            App.AppMagician.AppSettings = AppSettings;
+            App.AppMagician.Magic();
         }
-        private AppMagician AppMagician { get; set; }
-
         private void AdminButton_Click(object sender, RoutedEventArgs e)
         {
             var adminWindow = new AdminWindow(Business);
@@ -72,18 +70,16 @@ namespace EricNee.AutoStartDesktop
             Grid.SetColumn(appLayout, 0);
         }
 
-        private void Window_Initialized(object sender, EventArgs e)
+        private async void Window_Initialized(object sender, EventArgs e)
         {
-            AppMagician.Magic();
+            Clock.Interval += (args) =>
+            {
+                this.Dispatcher.Invoke(() =>
+                {
+                    LabelTime.Content = args.Now.ToString("MM-dd HH:mm:ss dddd");
+                });
+            };
+            await Clock.Start();
         }
-
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            AppMagician.Dispose();
-        }
-
-
-
-
     }
 }

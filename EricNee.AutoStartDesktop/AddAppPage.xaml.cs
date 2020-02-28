@@ -20,7 +20,7 @@ namespace EricNee.AutoStartDesktop
 
         private void ButtonSubmit_Click(object sender, RoutedEventArgs e)
         {
-            Business.Add(new AppEntity() { Id = Guid.NewGuid(), Cmd = TextBoxCmd.Text, ProcessName = TextBoxName.Text });
+            Business.Add(new AppEntity() { Id = Guid.NewGuid(), Args = TextBoxArgs.Text, Cmd = TextBoxCmd.Text, ProcessName = TextBoxName.Text });
             MessageBox.Show("Successful!");
             this.NavigationService.Navigate(new AddAppPage(Business));
         }

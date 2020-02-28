@@ -56,7 +56,10 @@ namespace EricNee.AutoStartDesktop
         private void ButtonExit_Click(object sender, RoutedEventArgs e)
         {
             if (Logged)
-                Application.Current.Shutdown();
+            {
+                if (MessageBox.Show("The action will cause the program to exit, OK?", "Warning", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    Application.Current.Shutdown();
+            }
             else
                 MessageBox.Show("Log in First!");
         }

@@ -20,6 +20,7 @@
                 <DataGridCheckBoxColumn Binding="{Binding Checked}" ClipboardContentBinding="{x:Null}"/>
                 <DataGridTextColumn Binding="{Binding ProcessName}" ClipboardContentBinding="{x:Null}" IsReadOnly="True"/>
                 <DataGridTextColumn Binding="{Binding Cmd}" ClipboardContentBinding="{x:Null}" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Args}" ClipboardContentBinding="{x:Null}" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="ButtonDeletion" Content="Delete" Grid.Row="1" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Click="ButtonDeletion_Click"></Button>

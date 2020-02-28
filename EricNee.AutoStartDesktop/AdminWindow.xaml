@@ -27,6 +27,6 @@
         <Button x:Name="ButtonAppSettings" Content="Settings" HorizontalAlignment="Left" Width="150" Grid.Column="4" Click="ButtonAppSettings_Click"></Button>
         <Button x:Name="ButtonExit" Content="Exit App" HorizontalAlignment="Left" Width="150" Grid.Row="0" Click="ButtonExit_Click" Grid.Column="5"/>
         <Label x:Name="LabelLogonInfo" Grid.Row="0" Background="{x:Null}" Content="Not logged in" Foreground="#FF3FBB11" Grid.Column="6" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Frame Name="FrameAdmin" Grid.ColumnSpan="6" Grid.Row="1"></Frame>
+        <Frame Name="FrameAdmin" Grid.ColumnSpan="7" Grid.Row="1"></Frame>
     </Grid>
 </Window>

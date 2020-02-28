@@ -14,7 +14,8 @@ namespace EricNee.AutoStartDesktop
         public AppView() { }
         public AppView(AppEntity app)
         {
-            Checked = false; Cmd = app.Cmd; Id = app.Id; Icon = app.Icon; LogonName = app.LogonName; ProcessName = app.ProcessName;
+            Checked = false; Cmd = app.Cmd; Id = app.Id; Icon = app.Icon; Args = app.Args;
+            LogonName = app.LogonName; ProcessName = app.ProcessName;
         }
 
         public static IEnumerable<AppView> ConvertTo(IEnumerable<AppEntity> apps)

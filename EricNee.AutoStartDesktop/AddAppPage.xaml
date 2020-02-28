@@ -32,5 +32,16 @@
             </Label.RenderTransform>
         </Label>
         <Button x:Name="ButtonSubmit" Content="Submit" HorizontalAlignment="Left" Margin="116,156,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.46,3.97" Click="ButtonSubmit_Click" />
+        <TextBox x:Name="TextBoxArgs" HorizontalAlignment="Left" Height="23" Margin="116,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="445" />
+        <Label x:Name="label_Copy1" Content="Args" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,115,0,0" RenderTransformOrigin="2.607,5.817" Width="85">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="-0.607" />
+                    <TranslateTransform X="1.458" Y="-0.863" />
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
     </Grid>
 </Page>
