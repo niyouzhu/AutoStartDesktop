@@ -31,12 +31,18 @@ namespace EricNee.AutoStartDesktop
 
         private void UserControl_Initialized(object sender, EventArgs e)
         {
-            AppName.Content = Process.ProcessName;
+            LabelName.Content = Process.ProcessName;
+            ImageIcon.Source = Process.Icon?.ToBitmapImage();
         }
 
 
 
-        private void AppName_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void LabelName_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            ClickIcon();
+        }
+
+        private void ClickIcon()
         {
             bool existing;
             var process = App.ProcessSet.Open(Process.Cmd, Process.Args, out existing);
@@ -44,6 +50,23 @@ namespace EricNee.AutoStartDesktop
             {
                 MessageBox.Show("该应用已经在运行，按住键盘 Alt + Tab 键切换并找到它");
             }
+        }
+
+        private Brush BackGroundBrush = new SolidColorBrush(Color.FromArgb(System.Drawing.Color.Silver.A, System.Drawing.Color.Silver.R, System.Drawing.Color.Silver.G, System.Drawing.Color.Silver.B));
+
+        private void GridAppIcon_MouseEnter(object sender, MouseEventArgs e)
+        {
+            GridAppIcon.Background = BackGroundBrush;
+        }
+
+        private void GridAppIcon_MouseLeave(object sender, MouseEventArgs e)
+        {
+            GridAppIcon.Background = null;
+        }
+
+        private void ImageIcon_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            ClickIcon();
         }
     }
 }

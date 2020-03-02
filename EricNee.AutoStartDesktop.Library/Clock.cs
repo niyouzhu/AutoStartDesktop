@@ -13,7 +13,6 @@ namespace EricNee.AutoStartDesktop.Library
     }
     public class Clock : IDisposable
     {
-
         public string CurrentTime { get; }
         public Task<string> ToFormatString()
         {
