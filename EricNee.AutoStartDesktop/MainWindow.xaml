@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EricNee.AutoStartDesktop"
-        mc:Ignorable="d"
+        mc:Ignorable="d" xmlns:res="clr-namespace:EricNee.AutoStartDesktop.Properties"
         Title="Applications" WindowState="Maximized" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Closing="Window_Closing" Initialized="Window_Initialized"  >
     <Grid x:Name="GridLayout">
         <Grid.ColumnDefinitions>
@@ -18,9 +18,9 @@
             <RowDefinition Height="30"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid x:Name="GridApps" Grid.Column="1" Grid.Row="1" Loaded="GridApps_Loaded"></Grid>
-        <Label HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1" Content="使用键盘 Alt + Tab 切换应用" Foreground="#FF47B40A" FontWeight="Bold"></Label>
+        <Label HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1" Content="{x:Static res:Resources.AltTab}" Foreground="#FF47B40A" FontWeight="Bold"></Label>
         <Label HorizontalAlignment="Right" Content="Http://Me.ZhuoYue.Me" Grid.Column="1" Grid.Row="2"/>
-        <Button Content="Admin" Name="AdminButton" Grid.Row="2" Grid.Column="1" Click="AdminButton_Click" Width="80"></Button>
+        <Button Content="{x:Static res:Resources.Admin}" Name="AdminButton" Grid.Row="2" Grid.Column="1" Click="AdminButton_Click" Width="80"></Button>
         <Label Name="LabelTime" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="0"></Label>
     </Grid>
 </Window>

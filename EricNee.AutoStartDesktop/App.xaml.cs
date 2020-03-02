@@ -4,8 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Windows;
 
 namespace EricNee.AutoStartDesktop
@@ -22,8 +24,26 @@ namespace EricNee.AutoStartDesktop
             var builder = new DbContextOptionsBuilder().UseSqlite(ConnectionString);
             return builder;
         }));
+
+        private void SetCulture()
+        {
+            if (CultureInfo.DefaultThreadCurrentUICulture == null || (CultureInfo.DefaultThreadCurrentUICulture != null && !CultureInfo.DefaultThreadCurrentUICulture.Name.Contains("en-")))
+            {
+                CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("zh-CN");
+            }
+            if (Thread.CurrentThread.CurrentUICulture == null || !Thread.CurrentThread.CurrentUICulture.Name.Contains("en-"))
+            {
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo("zh-CN");
+            }
+
+            if (Thread.CurrentThread.CurrentCulture == null || !Thread.CurrentThread.CurrentCulture.Name.Contains("en-"))
+            {
+                Thread.CurrentThread.CurrentCulture = new CultureInfo("zh-CN");
+            }
+        }
         protected override void OnStartup(StartupEventArgs e)
         {
+            SetCulture();
             base.OnStartup(e);
             Business.Init();
             AppMagician = new AppMagician(Business.GetAppSettings());

@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EricNee.AutoStartDesktop"
         mc:Ignorable="d"
-        Title="AdminWindow" >
+        xmlns:res="clr-namespace:EricNee.AutoStartDesktop.Properties"
+        Title="{x:Static res:Resources.AdminWindow}" >
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -20,13 +21,13 @@
             <RowDefinition Height="30"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Button x:Name="ButtonLogin" Content="Login" HorizontalAlignment="Left" Width="150" Grid.Row="0" Grid.Column="0" Click="ButtonLogin_Click"/>
-        <Button x:Name="ButtonUpdatePassword" Content="Change Password" HorizontalAlignment="Left" Width="150" Grid.Row="0" Grid.Column="1" Click="ButtonUpdatePassword_Click"/>
-        <Button x:Name="ButtonAddApp" Content="Add App" HorizontalAlignment="Left" Width="150" Grid.Row="0" Click="ButtonAddApp_Click" Grid.Column="2"/>
-        <Button x:Name="ButtonDeleteApp" Content="Delete App" HorizontalAlignment="Left" Width="150" Grid.Row="0" Grid.Column="3" Click="ButtonDeleteApp_Click"/>
-        <Button x:Name="ButtonAppSettings" Content="Settings" HorizontalAlignment="Left" Width="150" Grid.Column="4" Click="ButtonAppSettings_Click"></Button>
-        <Button x:Name="ButtonExit" Content="Exit App" HorizontalAlignment="Left" Width="150" Grid.Row="0" Click="ButtonExit_Click" Grid.Column="5"/>
-        <Label x:Name="LabelLogonInfo" Grid.Row="0" Background="{x:Null}" Content="Not logged in" Foreground="#FF3FBB11" Grid.Column="6" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button x:Name="ButtonLogin" Content="{x:Static res:Resources.Login}" HorizontalAlignment="Left" Width="150" Grid.Row="0" Grid.Column="0" Click="ButtonLogin_Click"/>
+        <Button x:Name="ButtonUpdatePassword" Content="{x:Static res:Resources.ChangePassword}" HorizontalAlignment="Left" Width="150" Grid.Row="0" Grid.Column="1" Click="ButtonUpdatePassword_Click"/>
+        <Button x:Name="ButtonAddApp" Content="{x:Static res:Resources.AddApp}" HorizontalAlignment="Left" Width="150" Grid.Row="0" Click="ButtonAddApp_Click" Grid.Column="2"/>
+        <Button x:Name="ButtonDeleteApp" Content="{x:Static res:Resources.DeleteApp}" HorizontalAlignment="Left" Width="150" Grid.Row="0" Grid.Column="3" Click="ButtonDeleteApp_Click"/>
+        <Button x:Name="ButtonAppSettings" Content="{x:Static res:Resources.Settings}" HorizontalAlignment="Left" Width="150" Grid.Column="4" Click="ButtonAppSettings_Click"></Button>
+        <Button x:Name="ButtonExit" Content="{x:Static res:Resources.ExitApp}" HorizontalAlignment="Left" Width="150" Grid.Row="0" Click="ButtonExit_Click" Grid.Column="5"/>
+        <Label x:Name="LabelLogonInfo" Grid.Row="0" Background="{x:Null}" Content="{x:Static res:Resources.NotLoggedIn}" Foreground="#FF3FBB11" Grid.Column="6" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Frame Name="FrameAdmin" Grid.ColumnSpan="7" Grid.Row="1"></Frame>
     </Grid>
 </Window>

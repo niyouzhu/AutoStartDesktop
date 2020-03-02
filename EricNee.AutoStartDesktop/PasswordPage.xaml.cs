@@ -39,7 +39,7 @@ namespace EricNee.AutoStartDesktop
             else
             {
                 Callback?.Invoke(false);
-                MessageBox.Show("Password is invalid.");
+                MessageBox.Show(Properties.Resources.PasswordIsInvalid);
             }
         }
     }

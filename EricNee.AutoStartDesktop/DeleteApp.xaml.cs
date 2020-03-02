@@ -36,7 +36,7 @@ namespace EricNee.AutoStartDesktop
             var dataContext = (IEnumerable<AppView>)DataGridApps.DataContext;
             Business.Remove(dataContext.Where(it => it.Checked == true));
             DataGridApps.DataContext = AppView.ConvertTo(Business.GetApps());
-            MessageBox.Show("Successful!");
+            MessageBox.Show(Properties.Resources.Succeed);
         }
     }
 }

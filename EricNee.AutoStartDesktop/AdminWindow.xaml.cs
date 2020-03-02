@@ -35,8 +35,8 @@ namespace EricNee.AutoStartDesktop
             var passwordPage = new PasswordPage(Business);
             passwordPage.Callback += (logined) =>
             {
-                if (logined) { Logged = true; LabelLogonInfo.Content = "Logged in"; }
-                else { Logged = false; LabelLogonInfo.Content = "Not logged in"; }
+                if (logined) { Logged = true; LabelLogonInfo.Content = Properties.Resources.LoggedIn; }
+                else { Logged = false; LabelLogonInfo.Content = Properties.Resources.NotLoggedIn; }
             };
             FrameAdmin.Navigate(passwordPage);
         }
@@ -49,7 +49,7 @@ namespace EricNee.AutoStartDesktop
             }
             else
             {
-                MessageBox.Show("Log in First!");
+                MessageBox.Show(Properties.Resources.LoginFirst);
             }
         }
 
@@ -57,11 +57,11 @@ namespace EricNee.AutoStartDesktop
         {
             if (Logged)
             {
-                if (MessageBox.Show("The action will cause the program to exit, OK?", "Warning", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                if (MessageBox.Show(Properties.Resources.ExitingPrompt, "Warning", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                     Application.Current.Shutdown();
             }
             else
-                MessageBox.Show("Log in First!");
+                MessageBox.Show(Properties.Resources.LoginFirst);
         }
 
         private void ButtonUpdatePassword_Click(object sender, RoutedEventArgs e)
@@ -72,7 +72,7 @@ namespace EricNee.AutoStartDesktop
             }
             else
             {
-                MessageBox.Show("Log in First!");
+                MessageBox.Show(Properties.Resources.LoginFirst);
             }
         }
 
@@ -84,7 +84,7 @@ namespace EricNee.AutoStartDesktop
             }
             else
             {
-                MessageBox.Show("Log in First!");
+                MessageBox.Show(Properties.Resources.LoginFirst);
             }
         }
 
@@ -96,7 +96,7 @@ namespace EricNee.AutoStartDesktop
             }
             else
             {
-                MessageBox.Show("Log in First!");
+                MessageBox.Show(Properties.Resources.LoginFirst);
             }
         }
     }

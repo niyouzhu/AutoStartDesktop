@@ -32,11 +32,11 @@ namespace EricNee.AutoStartDesktop
         {
             if (PasswordNew.Password != PasswordNew2.Password)
             {
-                MessageBox.Show("The new passwords are not the same.");
+                MessageBox.Show(Properties.Resources.PasswordNotSame);
                 return;
             }
             var admin = Business.UpdateAdmin(new ChangedPasswordBusinessModel() { NewPassword = PasswordNew.Password, OldPassword = PasswordOld.Password });
-            MessageBox.Show("Password is changed!");
+            MessageBox.Show(Properties.Resources.PasswordIsChanged);
         }
     }
 }

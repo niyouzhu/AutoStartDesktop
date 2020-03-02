@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:EricNee.AutoStartDesktop"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="800" xmlns:res="clr-namespace:EricNee.AutoStartDesktop.Properties"
       Title="Settings">
 
     <Grid x:Name="GridAppSettings">
@@ -13,7 +13,7 @@
             <RowDefinition Height="121*"/>
             <RowDefinition Height="104*"/>
         </Grid.RowDefinitions>
-        <Label x:Name="label" Content="Disable Windows Key" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,47,0,0" RenderTransformOrigin="2.607,5.817" Width="135">
+        <Label x:Name="label" Content="{x:Static res:Resources.DisableWindowsKey}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,47,0,0" RenderTransformOrigin="2.607,5.817" Width="135">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform />
@@ -23,7 +23,7 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Label x:Name="label_Copy" Content="Disable Alt + F4" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,73,0,0" RenderTransformOrigin="2.607,5.817" Width="135">
+        <Label x:Name="label_Copy" Content="{x:Static res:Resources.DisableAltF4}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,73,0,0" RenderTransformOrigin="2.607,5.817" Width="135">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform />
@@ -33,10 +33,10 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Button x:Name="ButtonSubmit" Content="Submit" HorizontalAlignment="Left" Margin="198,156,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.46,3.97" Click="ButtonSubmit_Click" />
+        <Button x:Name="ButtonSubmit" Content="{x:Static res:Resources.Submit}" HorizontalAlignment="Left" Margin="198,156,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.46,3.97" Click="ButtonSubmit_Click" />
         <CheckBox x:Name="CheckBoxWindowsKey" IsChecked="{Binding DisabledWindowsKey}" Content="" HorizontalAlignment="Left" Margin="199,54,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="CheckBoxAltF4" IsChecked="{Binding DisabledAltF4}" HorizontalAlignment="Left" Margin="199,80,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_Copy2" Content="Hide Taskbar" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,99,0,0" RenderTransformOrigin="2.607,5.817" Width="135">
+        <Label x:Name="label_Copy2" Content="{x:Static res:Resources.HideTaskbar}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,99,0,0" RenderTransformOrigin="2.607,5.817" Width="135">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform />
