@@ -12,19 +12,11 @@ namespace EricNee.AutoStartDesktop.Library
 
         public DbSet<AdminEntity> Admin { get; set; }
 
-        public AutoStartsDbContext() : base()
-        {
-            Database.EnsureCreated();
-        }
 
-        public AutoStartsDbContext(Func<DbContextOptionsBuilder> builder) : base(builder?.Invoke().Options)
+        public AutoStartsDbContext(DbContextOptions<AutoStartsDbContext> options) : base(options)
         {
             this.Database.EnsureCreated();
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            base.OnConfiguring(optionsBuilder);
-        }
     }
 }

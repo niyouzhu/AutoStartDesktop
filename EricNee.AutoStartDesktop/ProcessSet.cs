@@ -6,10 +6,8 @@ using System.Text;
 
 namespace EricNee.AutoStartDesktop
 {
-    public class ProcessSet
+    public class ProcessSet : HashSet<Process>
     {
-        public Dictionary<string, Process> Processes { get; } = new Dictionary<string, Process>();
-
 
         public Process Open(string cmd, string args, out bool existing)
         {
@@ -18,11 +16,11 @@ namespace EricNee.AutoStartDesktop
         public Process Open(ProcessStartInfo processStartInfo, out bool existing)
         {
             existing = false;
-            var first = Processes.FirstOrDefault(it => string.Equals(it.Value.StartInfo.FileName, processStartInfo.FileName));
-            if (!first.Equals(default(KeyValuePair<string, Process>)))
+            var first = this.FirstOrDefault(it => string.Equals(it.StartInfo.FileName, processStartInfo.FileName, StringComparison.InvariantCultureIgnoreCase));
+            if (first != null)
             {
                 existing = true;
-                return first.Value;
+                return first;
             }
             else
             {
@@ -30,9 +28,9 @@ namespace EricNee.AutoStartDesktop
                 process.EnableRaisingEvents = true;
                 process.Exited += (o, e) =>
  {
-     Processes.Remove(process.ProcessName);
+     this.Remove(process);
  };
-                Processes.Add(process.ProcessName, process);
+                this.Add(process);
                 return process;
             }
         }

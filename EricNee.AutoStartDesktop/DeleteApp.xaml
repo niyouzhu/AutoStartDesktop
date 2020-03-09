@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:EricNee.AutoStartDesktop"
       xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="EricNee.AutoStartDesktop.DeleteApp"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="800" xmlns:res="clr-namespace:EricNee.AutoStartDesktop.Properties"
       Title="DeleteApp">
 
     <Grid>
@@ -23,6 +23,6 @@
                 <DataGridTextColumn Binding="{Binding Args}" ClipboardContentBinding="{x:Null}" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="ButtonDeletion" Content="Delete" Grid.Row="1" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Click="ButtonDeletion_Click"></Button>
+        <Button x:Name="ButtonDeletion" Content="{x:Static res:Resources.Delete}" Grid.Row="1" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Click="ButtonDeletion_Click"></Button>
     </Grid>
 </Page>

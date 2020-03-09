@@ -4,9 +4,9 @@ using System.Text;
 
 namespace EricNee.AutoStartDesktop.Library
 {
-    public class Business
+    public class Business : IDisposable
     {
-        public DataAccessor DataAccessor { get; }
+        public DataAccessor DataAccessor { get; private set; }
         public Business(DataAccessor dataAccessor)
         {
             DataAccessor = dataAccessor;
@@ -84,6 +84,17 @@ namespace EricNee.AutoStartDesktop.Library
                 return password;
             }
             throw new Exception("Old password is incorrect!");
+        }
+
+        private bool _disposed;
+        public void Dispose()
+        {
+            if (_disposed == false && DataAccessor != null)
+            {
+                _disposed = true;
+                DataAccessor.Dispose();
+                DataAccessor = null;
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using EricNee.AutoStartDesktop.Library;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -18,36 +19,26 @@ namespace EricNee.AutoStartDesktop
     public partial class App : Application
     {
 
-        internal static string ConnectionString { get; } = $"DataSource={Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AutoStartDesktop.db")};";
-        private Business Business { get; } = new Business(new DataAccessor(() =>
-        {
-            var builder = new DbContextOptionsBuilder().UseSqlite(ConnectionString);
-            return builder;
-        }));
 
-        private void SetCulture()
-        {
-            if (CultureInfo.DefaultThreadCurrentUICulture == null || (CultureInfo.DefaultThreadCurrentUICulture != null && !CultureInfo.DefaultThreadCurrentUICulture.Name.Contains("en-")))
-            {
-                CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("zh-CN");
-            }
-            if (Thread.CurrentThread.CurrentUICulture == null || !Thread.CurrentThread.CurrentUICulture.Name.Contains("en-"))
-            {
-                Thread.CurrentThread.CurrentUICulture = new CultureInfo("zh-CN");
-            }
 
-            if (Thread.CurrentThread.CurrentCulture == null || !Thread.CurrentThread.CurrentCulture.Name.Contains("en-"))
-            {
-                Thread.CurrentThread.CurrentCulture = new CultureInfo("zh-CN");
-            }
-        }
+        internal static Startup MainStartup { get; private set; } = new Startup(AppDomain.CurrentDomain.BaseDirectory);
+
         protected override void OnStartup(StartupEventArgs e)
         {
-            SetCulture();
+            MainStartup.ConfigureServices();
             base.OnStartup(e);
-            Business.Init();
-            AppMagician = new AppMagician(Business.GetAppSettings());
-            AppMagician.Magic();
+            using (var business = MainStartup.ServiceProvider.GetRequiredService<Business>())
+            {
+                business.Init();
+                var appSettings = business.GetAppSettings();
+                AppMagician = new AppMagician(appSettings);
+                if (!string.IsNullOrWhiteSpace(appSettings.CultureName) && appSettings.CultureName != "neutral")
+                {
+                    Thread.CurrentThread.CurrentCulture = new CultureInfo(appSettings.CultureName);
+                    Thread.CurrentThread.CurrentUICulture = new CultureInfo(appSettings.CultureName);
+                }
+                AppMagician.Magic();
+            }
         }
 
 

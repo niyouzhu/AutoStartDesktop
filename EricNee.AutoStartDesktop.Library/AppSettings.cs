@@ -17,6 +17,9 @@ namespace EricNee.AutoStartDesktop.Library
         [DataMember]
         public bool HiddenTaskbar { get; set; }
 
+        [DataMember]
+        public string CultureName { get; set; }
+
         public string ToFormatString()
         {
             return ToString(this);

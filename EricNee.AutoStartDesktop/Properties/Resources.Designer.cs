@@ -151,6 +151,15 @@ namespace EricNee.AutoStartDesktop.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Take effect after the program is restarted..
+        /// </summary>
+        public static string CultureChangedTip {
+            get {
+                return ResourceManager.GetString("CultureChangedTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Default is 123456.
         /// </summary>
         public static string DefaultPassword {

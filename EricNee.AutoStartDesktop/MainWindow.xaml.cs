@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace EricNee.AutoStartDesktop
 {
@@ -22,36 +23,42 @@ namespace EricNee.AutoStartDesktop
     public partial class MainWindow : Window
     {
 
-        private Business Business { get; } = new Business(new DataAccessor(() =>
-        {
-            var builder = new DbContextOptionsBuilder().UseSqlite(App.ConnectionString);
-            return builder;
-        }));
-
+        private IServiceProvider ServiceProvider { get; } = App.MainStartup.ServiceProvider;
 
         private Clock Clock { get; } = new Clock();
         private Library.AppSettings AppSettings { get; set; }
         public MainWindow()
         {
-            AppSettings = Business.GetAppSettings();
+            using (var business = ServiceProvider.GetService<Business>())
+            {
+                AppSettings = business.GetAppSettings();
+            }
             InitializeComponent();
         }
 
         public void Refresh()
         {
-            AppSettings = Business.GetAppSettings();
+            using (var business = ServiceProvider.GetService<Business>())
+            {
+                AppSettings = business.GetAppSettings();
+            }
             App.AppMagician.AppSettings = AppSettings;
             App.AppMagician.Magic();
         }
         private void AdminButton_Click(object sender, RoutedEventArgs e)
         {
-            var adminWindow = new AdminWindow(Business);
-            adminWindow.Closed += (o, e2) =>
+            using (var business = ServiceProvider.GetService<Business>())
             {
-                Refresh();
-                GridApps_Loaded(null, null);
-            };
-            adminWindow.ShowDialog();
+                var adminWindow = new AdminWindow(business);
+                adminWindow.Closed += (o, e2) =>
+                {
+                    Refresh();
+                    GridApps_Loaded(null, null);
+                };
+                adminWindow.ShowDialog();
+            }
+
+
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -65,9 +72,13 @@ namespace EricNee.AutoStartDesktop
         private void GridApps_Loaded(object sender, RoutedEventArgs e)
         {
             GridApps.Children.Clear();
-            var appLayout = new AppLayoutUserControl(Business.GetApps());
-            GridApps.Children.Add(appLayout);
-            Grid.SetColumn(appLayout, 0);
+            using (var business = ServiceProvider.GetService<Business>())
+            {
+                var appLayout = new AppLayoutUserControl(business.GetApps());
+                GridApps.Children.Add(appLayout);
+                Grid.SetColumn(appLayout, 0);
+
+            }
         }
 
         private async void Window_Initialized(object sender, EventArgs e)

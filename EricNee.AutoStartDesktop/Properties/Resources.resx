@@ -213,4 +213,7 @@
   <data name="PasswordIsInvalid" xml:space="preserve">
     <value>The password is invalid!</value>
   </data>
+  <data name="CultureChangedTip" xml:space="preserve">
+    <value>Take effect after the program is restarted.</value>
+  </data>
 </root>
